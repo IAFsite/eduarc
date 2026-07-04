@@ -254,7 +254,7 @@ body{
         <a href="create.html" class="app">
           <div class="icon">▣</div>
           <div class="info">
-            <h3>New Entry</h3>
+            <h3>New entry</h3>
           </div>
 
           
@@ -303,7 +303,7 @@ async function loadGrade(){
 
   try{
 
-    const res = await fetch("entry/index.json");
+    const res = await fetch("https://raw.githubusercontent.com/IAFsite/eduarc/main/entry/index.json");
 
     const json = await res.json();
 
