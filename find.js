@@ -28,7 +28,7 @@ async function load() {
 
     try {
 
-        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/eddb/main//${grade}/${subject}/data.json`);
+        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/dbea/main/${grade}/${subject}/data.json`);
 
         if (!res.ok) throw new Error("File not found");
 
@@ -87,6 +87,12 @@ function parseReg(reg) {
 /* =========================
    EDUARC PARSER
 ========================= */
+
+const ASSET_BASE = "https://raw.githubusercontent.com/IAFsite/dbea/main/";
+
+function asset(path){
+    return `${ASSET_BASE}${path}`;
+}
 
 function parseContent(text=""){
 
@@ -165,7 +171,7 @@ function parseContent(text=""){
             html += `
                 <img
                     class="edu-image"
-                    src="${src}"
+                    src="${asset(src)}"
                     loading="lazy">
             `;
 
@@ -183,7 +189,7 @@ function parseContent(text=""){
                 <video
                     class="edu-video"
                     controls
-                    src="${src}">
+                    src="${asset(src)}">
                 </video>
             `;
 
@@ -200,7 +206,7 @@ function parseContent(text=""){
             html += `
                 <iframe
                     class="edu-pdf"
-                    src="${src}">
+                    src="${asset(src)}">
                 </iframe>
             `;
 
@@ -217,7 +223,7 @@ function parseContent(text=""){
             html += `
                 <audio
                     controls
-                    src="${src}">
+                    src="${asset(src)}">
                 </audio>
             `;
 
@@ -236,7 +242,7 @@ function parseContent(text=""){
             html += `
                 <a
                     class="edu-file"
-                    href="${src}"
+                    href="${asset(src)}"
                     download>
                     📦 ${name}
                 </a>
@@ -361,7 +367,7 @@ function select(file){
 
         ["Subject",meta.show_as||""],
 
-        ["https://raw.githubusercontent.com/IAFsite/eddb/main/",info.number],
+        ["Entry",info.number],
 
         ["Date",info.date]
 
