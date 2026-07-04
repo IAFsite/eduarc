@@ -13,7 +13,7 @@ async function load() {
 
     try {
 
-        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/eduarc/main/entry/${gradeId}/index.json`);
+        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/eddb/main//${gradeId}/index.json`);
         const json = await res.json();
 
 meta = json ?? {};
@@ -59,7 +59,7 @@ function render(list = subjects) {
 
         card.style.setProperty(
             "--bg",
-            `url(https://raw.githubusercontent.com/IAFsite/eduarc/main/entry/${gradeId}/${subject.wp || ""})`
+            `url(https://raw.githubusercontent.com/IAFsite/eddb/main//${gradeId}/${subject.wp || ""})`
         );
 
         card.innerHTML = `

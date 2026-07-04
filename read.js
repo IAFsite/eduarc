@@ -28,7 +28,7 @@ async function load(){
 
     try{
 
-        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/eduarc/main/entry/${grade}/${subject}/data.json`);
+        const res = await fetch(`https://raw.githubusercontent.com/IAFsite/eddb/main//${grade}/${subject}/data.json`);
 
         if(!res.ok) throw new Error("File not found");
 
@@ -273,7 +273,7 @@ function select(file){
 
             ["Subject",meta.show_as||""],
 
-            ["https://raw.githubusercontent.com/IAFsite/eduarc/main/entry",info.number],
+            ["https://raw.githubusercontent.com/IAFsite/eddb/main/",info.number],
 
             ["Date",info.date]
 
