@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="find.js" defer></script>
+<link rel="stylesheet" href="find.css">
+
+<title>IAF | EDUARC</title>
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <a class="back-btn" id="backBtn">
+    ← Back
+  </a>
+
+  <div class="logo">
+    <img src="../iaf-logo.png">
+    <span>EDUARC</span>
+  </div>
+
+</div>
+
+<section class="hero">
+
+<!-- LEFT -->
+<div class="hero-right">
+
+  <h2 id="pageTitle">IAF Archive</h2>
+  <p>IAF | Education Rachive</p>
+
+  <div class="search-group">
+
+    <input
+      id="search"
+      placeholder="Search archive..."
+      oninput="applyFilter()"
+    >
+
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <div class="footer">
+    © 2026 IAF Digital Engineering — EDUARC
+  </div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="hero-left">
+
+  <img id="bg" src="">
+
+  <div class="profile">
+
+    <h1 id="title">SELECT DOCUMENT</h1>
+
+    <p id="desc">
+      Archive document preview will appear here
+    </p>
+
+    <div class="info-grid" id="info"></div>
+
+    <div class="doc-content" id="content">
+      No document selected
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+</body>
+</html>

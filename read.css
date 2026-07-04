@@ -1,0 +1,361 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#000;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+}
+
+.bg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.35);
+}
+
+.bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.95)
+        );
+}
+
+/* =========================
+   VIEWER
+========================= */
+
+.viewer{
+
+    width:100%;
+    max-width:950px;
+
+    margin:auto;
+
+    padding:100px 30px 40px;
+
+}
+
+#title{
+
+    font-size:48px;
+    margin-bottom:10px;
+
+}
+
+#desc{
+
+    color:#aaa;
+    margin-bottom:24px;
+
+}
+
+.info-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:12px;
+
+    margin-bottom:24px;
+
+}
+
+.info-item{
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+.info-item h3{
+
+    color:#888;
+    font-size:12px;
+    margin-bottom:6px;
+
+}
+
+.doc-content{
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:24px;
+
+    line-height:1.8;
+
+    word-break:break-word;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+    .viewer{
+
+        padding:90px 18px 24px;
+
+    }
+
+    #title{
+
+        font-size:30px;
+
+    }
+
+    #desc{
+
+        font-size:14px;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .doc-content{
+
+        padding:18px;
+
+        font-size:15px;
+
+    }
+
+}
+/* =========================
+   TOPBAR
+========================= */
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px 30px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  z-index:999;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  pointer-events:auto;
+}
+
+.logo img{
+  height:34px;
+}
+
+.logo span{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.back-btn{
+  pointer-events:auto;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(20,20,20,.6);
+  backdrop-filter:blur(10px);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+/* =========================
+   EDUARC PARSER
+========================= */
+
+.doc-content hr{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.08);
+    margin:22px 0;
+}
+
+.doc-content p{
+    margin:12px 0;
+    line-height:1.8;
+    color:#d7d7d7;
+}
+
+/* NOTE */
+
+.edu-note{
+
+    margin:18px 0;
+    padding:16px 18px;
+
+    border-left:4px solid #4da3ff;
+
+    background:rgba(77,163,255,.08);
+
+    border-radius:10px;
+
+    color:#d8ebff;
+
+}
+
+/* IMAGE */
+
+.edu-image{
+
+    display:block;
+
+    width:100%;
+    max-width:100%;
+
+    margin:18px auto;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* VIDEO */
+
+.edu-video{
+
+    width:100%;
+
+    margin:18px 0;
+
+    border-radius:12px;
+
+    background:#111;
+
+}
+
+/* PDF */
+
+.edu-pdf{
+
+    width:100%;
+    height:650px;
+
+    margin:18px 0;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#111;
+
+}
+
+/* AUDIO */
+
+.doc-content audio{
+
+    width:100%;
+
+    margin:18px 0;
+
+}
+
+/* FILE */
+
+.edu-file{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:18px 0;
+
+    padding:12px 18px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    background:#171717;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+    transition:.25s;
+
+}
+
+.edu-file:hover{
+
+    background:#222;
+
+}
+
+/* CODE */
+
+.doc-content pre{
+
+    margin:18px 0;
+
+    overflow:auto;
+
+    background:#0c0c0c;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    padding:18px;
+
+}
+
+.doc-content code{
+
+    font-family:Consolas,"Courier New",monospace;
+
+    color:#67d6ff;
+
+    font-size:13px;
+
+    white-space:pre;
+
+}

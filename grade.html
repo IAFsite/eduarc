@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="grade.js" defer></script>
+<title>IAF | EDUARC</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#000;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px 30px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  z-index:999;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  pointer-events:auto;
+}
+
+.logo img{
+  height:34px;
+}
+
+.logo span{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.back-btn{
+  pointer-events:auto;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(20,20,20,.6);
+  backdrop-filter:blur(10px);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.hero{
+  width:100%;
+  height:100vh;
+  display:flex;
+}
+
+/* =========================
+   LEFT CATALOG
+========================= */
+.hero-right{
+  width:520px;
+  height:100vh;
+
+  display:flex;
+  flex-direction:column;
+
+  padding:90px 40px 20px;
+  background:#050505;
+  border-right:1px solid rgba(255,255,255,.06);
+}
+
+.hero-right h2{
+  font-size:38px;
+}
+
+.hero-right p{
+  font-size:13px;
+  color:#888;
+  margin-bottom:18px;
+}
+
+/* SEARCH */
+.search-group{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.search-group input,
+.search-group select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  background:#14141b;
+  color:#fff;
+}
+
+/* LIST */
+.list{
+  flex:1;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding-right:4px;
+}
+
+/* =========================
+   DOCUMENT CARD
+========================= */
+.unit{
+  position:relative;
+  overflow:hidden;
+
+  min-height:110px;
+
+  display:flex;
+  align-items:flex-end;
+
+  padding:18px;
+  border-radius:14px;
+
+  cursor:pointer;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.25s;
+  isolation:isolate;
+}
+
+/* background image */
+.unit::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-image:var(--bg);
+  background-size:cover;
+  background-position:center;
+
+  filter:blur(2px);
+  transform:scale(1.1);
+
+  z-index:-2;
+}
+
+/* dark overlay */
+.unit::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.92),
+      rgba(0,0,0,.45)
+    );
+
+  z-index:-1;
+}
+
+.unit:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.18);
+}
+
+.unit-info h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.unit-info .reg{
+  font-size:12px;
+  color:#9f9f9f;
+  margin-bottom:6px;
+}
+
+.unit-info .meta{
+  font-size:13px;
+  color:#d0d0d0;
+}
+
+/* accent */
+.unit{
+  border-left:4px solid var(--accent);
+}
+
+/* COLORS */
+.doc{ --accent:#4da3ff; }
+.fdoc{ --accent:#a96cff; }
+.dlog{ --accent:#46d9ff; }
+.fimo{ --accent:#ff9f43; }
+.rep{ --accent:#3ddc84; }
+
+/* FOOTER */
+.footer{
+  margin-top:10px;
+  font-size:11px;
+  color:#666;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+.hero-left{
+  flex:1;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+}
+
+/* wallpaper */
+.hero-left img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:.3s;
+}
+
+#bg[src=""]{
+  opacity:0;
+}
+
+/* PROFILE */
+.profile{
+  position:absolute;
+
+  left:60px;
+  top:120px;
+  bottom:40px;
+
+  width:calc(100% - 120px);
+
+  display:flex;
+  flex-direction:column;
+
+  z-index:2;
+}
+
+.profile h1{
+  font-size:58px;
+  margin-bottom:10px;
+}
+
+.profile p{
+  color:#bbb;
+  line-height:1.6;
+}
+
+/* INFO GRID */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+
+.info-box{
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.08);
+  padding:10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* CONTENT */
+.doc-content{
+  margin-top:18px;
+
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:14px;
+  padding:18px;
+
+  line-height:1.7;
+  color:#d0d0d0;
+
+
+  overflow:auto;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:900px){
+
+  .hero{
+    display:block;
+  }
+
+  .hero-left{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+
+  .hero-right{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    height:100vh;
+
+    border:none;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(12px);
+  }
+
+  .header h1{
+    font-size:46px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <a class="back-btn" href="../index.html">
+    ← Back
+  </a>
+
+  <div class="logo">
+    <img src="../iaf-logo.png">
+    <span>WRKOS</span>
+  </div>
+
+</div>
+
+<section class="hero">
+
+<!-- LEFT -->
+<div class="hero-right">
+
+  <h2 id="pageTitle">IAF Archive</h2>
+  <p>IAF | Education Rachive</p>
+
+  <div class="search-group">
+
+    <input
+      id="search"
+      placeholder="Search archive..."
+      oninput="applyFilter()"
+    >
+
+
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <div class="footer">
+    © 2026 IAF Digital Engineering — EDUARC
+  </div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="hero-left">
+
+  <img id="bg" src="wp.png">
+
+
+</div>
+
+</section>
+
+</body>
+</html>
