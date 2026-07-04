@@ -87,23 +87,31 @@ function parseReg(reg){
    EDUARC PARSER
 ========================= */
 
+const ASSET_BASE = "https://raw.githubusercontent.com/IAFsite/dbea/main/";
+
+function asset(path){
+    return `${ASSET_BASE}${path}`;
+}
+
 function parseContent(text=""){
 
-    const lines=text.split("\n");
+    const lines = text.split("\n");
 
-    let html="";
+    let html = "";
 
-    let code=false;
+    let code = false;
 
     for(let raw of lines){
 
-        const line=raw.trim();
+        const line = raw.trim();
+
+        /* CODE */
 
         if(line=="#code"){
 
-            code=true;
+            code = true;
 
-            html+="<pre><code>";
+            html += "<pre><code>";
 
             continue;
 
@@ -111,9 +119,9 @@ function parseContent(text=""){
 
         if(line=="#endcode"){
 
-            code=false;
+            code = false;
 
-            html+="</code></pre>";
+            html += "</code></pre>";
 
             continue;
 
@@ -121,7 +129,7 @@ function parseContent(text=""){
 
         if(code){
 
-            html+=line
+            html += line
                 .replace(/</g,"&lt;")
                 .replace(/>/g,"&gt;")+"\n";
 
@@ -129,17 +137,21 @@ function parseContent(text=""){
 
         }
 
+        /* LINE */
+
         if(line=="___"){
 
-            html+="<hr>";
+            html += "<hr>";
 
             continue;
 
         }
 
+        /* NOTE */
+
         if(line.startsWith("#note")){
 
-            html+=`
+            html += `
                 <div class="edu-note">
                     ${line.replace("#note","").trim()}
                 </div>
@@ -149,14 +161,16 @@ function parseContent(text=""){
 
         }
 
+        /* IMAGE */
+
         if(line.startsWith("#image")){
 
-            const src=line.replace("#image","").trim();
+            const src = line.replace("#image","").trim();
 
-            html+=`
+            html += `
                 <img
                     class="edu-image"
-                    src="${src}"
+                    src="${asset(src)}"
                     loading="lazy">
             `;
 
@@ -164,15 +178,17 @@ function parseContent(text=""){
 
         }
 
+        /* VIDEO */
+
         if(line.startsWith("#video")){
 
-            const src=line.replace("#video","").trim();
+            const src = line.replace("#video","").trim();
 
-            html+=`
+            html += `
                 <video
                     class="edu-video"
                     controls
-                    src="${src}">
+                    src="${asset(src)}">
                 </video>
             `;
 
@@ -180,14 +196,16 @@ function parseContent(text=""){
 
         }
 
+        /* PDF */
+
         if(line.startsWith("#pdf")){
 
-            const src=line.replace("#pdf","").trim();
+            const src = line.replace("#pdf","").trim();
 
-            html+=`
+            html += `
                 <iframe
                     class="edu-pdf"
-                    src="${src}">
+                    src="${asset(src)}">
                 </iframe>
             `;
 
@@ -195,14 +213,16 @@ function parseContent(text=""){
 
         }
 
+        /* AUDIO */
+
         if(line.startsWith("#audio")){
 
-            const src=line.replace("#audio","").trim();
+            const src = line.replace("#audio","").trim();
 
-            html+=`
+            html += `
                 <audio
                     controls
-                    src="${src}">
+                    src="${asset(src)}">
                 </audio>
             `;
 
@@ -210,16 +230,18 @@ function parseContent(text=""){
 
         }
 
+        /* FILE */
+
         if(line.startsWith("#file")){
 
-            const src=line.replace("#file","").trim();
+            const src = line.replace("#file","").trim();
 
-            const name=src.split("/").pop();
+            const name = src.split("/").pop();
 
-            html+=`
+            html += `
                 <a
                     class="edu-file"
-                    href="${src}"
+                    href="${asset(src)}"
                     download>
                     📦 ${name}
                 </a>
@@ -229,9 +251,11 @@ function parseContent(text=""){
 
         }
 
+        /* NORMAL TEXT */
+
         if(line!=""){
 
-            html+=`<p>${line}</p>`;
+            html += `<p>${line}</p>`;
 
         }
 
