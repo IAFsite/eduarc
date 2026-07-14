@@ -219,55 +219,19 @@ body{
    RIGHT PANEL
 ========================= */
 .hero-left{
-  flex:1;
-  position:relative;
-  overflow:hidden;
-  background:#000;
+    flex:1;
+    position:relative;
+    overflow:hidden;
 }
 
-/* wallpaper */
-.hero-left img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  transition:.3s;
-}
-
-#bg[src=""]{
-  opacity:0;
-}
-
-/* overlay */
-.hero-left::after{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.92),
-      rgba(0,0,0,.35)
-    );
-
-  pointer-events:none;
-}
-
-/* PROFILE */
 .profile{
-  position:absolute;
+    position:absolute;
+    inset:120px 60px 40px 60px;
 
-  left:60px;
-  top:120px;
-  bottom:40px;
-
-  width:calc(100% - 120px);
-
-  display:flex;
-  flex-direction:column;
-
-  z-index:2;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    min-height:0;
 }
 
 .profile h1{
@@ -350,16 +314,16 @@ body{
 /* IMAGE */
 
 .edu-image{
-  width:100%;
-  display:block;
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
 
-  margin:18px 0;
+    margin:18px 0;
 
-  border-radius:12px;
-
-  border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
 }
-
 /* VIDEO */
 
 .edu-video{
