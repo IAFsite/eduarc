@@ -37,11 +37,11 @@ body{
 }
 
 .logo img{
-  height:34px;
+  height:25px;
 }
 
 .logo span{
-  font-size:14px;
+  font-size:25px;
   font-weight:700;
   letter-spacing:2px;
 }
@@ -467,4 +467,3 @@ body{
     border-left:4px solid #3ddc84;
     background:rgba(61,220,132,.08);
 }
-

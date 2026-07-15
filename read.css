@@ -167,28 +167,25 @@ body{
   top:0;
   left:0;
   width:100%;
-  padding:20px 30px;
-
+  padding:15px 15px;
   display:flex;
-  justify-content:space-between;
+  justify-content:flex-end;
   align-items:center;
-
   z-index:999;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:10px;
-  pointer-events:auto;
+  gap:12px;
 }
 
 .logo img{
-  height:34px;
+  height:25px;
 }
 
 .logo span{
-  font-size:14px;
+  font-size:25px;
   font-weight:700;
   letter-spacing:2px;
 }

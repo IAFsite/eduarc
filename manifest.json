@@ -2,7 +2,7 @@
   "name": "EDUARC",
   "short_name": "EDUARC",
 
-  "description": "IAF internal operating system interface",
+  "description": "IAF Education Archive",
 
   "start_url": "./",
   "scope": "./",
