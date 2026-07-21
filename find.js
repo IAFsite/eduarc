@@ -179,6 +179,53 @@ function parseContent(text=""){
 
         }
 
+        /* eror */
+
+        if(line.startsWith("#empty")){
+
+            const src = line.replace("#empty","").trim();
+
+            html += `
+                <img
+                    class="edu-image"
+                    src="${asset("empty.png")}"
+                    loading="lazy">
+            `;
+
+            continue;
+
+        }    
+
+        if(line.startsWith("#404")){
+
+            const src = line.replace("#404","").trim();
+
+            html += `
+                <img
+                    class="edu-image"
+                    src="${asset("404.png")}"
+                    loading="lazy">
+            `;
+
+            continue;
+
+        }   
+
+        if(line.startsWith("#delet")){
+
+            const src = line.replace("#delet","").trim();
+
+            html += `
+                <img
+                    class="edu-image"
+                    src="${asset("delet.png")}"
+                    loading="lazy">
+            `;
+
+            continue;
+
+        }   
+
         /* VIDEO */
 
         if(line.startsWith("#video")){
